@@ -1,0 +1,44 @@
+<mxfile host="65bd71144e">
+    <diagram id="NDBCtkuLpgBDVmOgMb0P" name="Page-1">
+        <mxGraphModel dx="744" dy="636" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="11" value="" style="group" connectable="0" vertex="1" parent="1">
+                    <mxGeometry x="330" y="420" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image;image=img/lib/active_directory/home_page.svg;" vertex="1" parent="11">
+                    <mxGeometry width="110" height="99" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Page" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="11">
+                    <mxGeometry x="30" y="90" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="group" connectable="0" vertex="1" parent="1">
+                    <mxGeometry x="317.5" y="260" width="125" height="153" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" style="edgeStyle=none;html=1;" edge="1" parent="12" source="5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="62.5" y="153" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Browser.svg;" vertex="1" parent="12">
+                    <mxGeometry width="125" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Browser" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="12">
+                    <mxGeometry x="32.5" y="50" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="320" y="110" width="120" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" style="edgeStyle=none;html=1;" parent="13" source="3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="60" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Playwright" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" parent="13" vertex="1">
+                    <mxGeometry width="120" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
