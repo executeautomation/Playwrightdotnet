@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.Playwright;
 using NUnit.Framework;
+using PlaywrightDemo.Pages;
 
 namespace PlaywrightDemo;
 
@@ -34,5 +35,45 @@ public class Tests
         await page.ClickAsync("text=Log in");
         var isExist = await page.Locator("text='Employee Details'").IsVisibleAsync();
         Assert.IsTrue(isExist);
+    }
+    
+    [Test]
+    public async Task TestWithPOM()
+    {
+        //Playwright
+        using var playwright = await Playwright.CreateAsync();
+        //Browser
+        await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+        {
+            Headless = false
+        });
+        //Page
+        var page = await browser.NewPageAsync();
+        await page.GotoAsync("http://www.eaapp.somee.com");
+
+        var loginPage = new LoginPageUpgraded(page);
+        await loginPage.ClickLogin();
+        await loginPage.Login("admin", "password");
+        var isExist = await loginPage.IsEmployeeDetailsExists();
+        Assert.IsTrue(isExist);
+    }
+
+    
+    [Test]
+    public async Task WaitTest()
+    {
+        using var playwright = await Playwright.CreateAsync();
+        await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+        {
+            Headless = false,
+        });
+        var context = await browser.NewContextAsync();
+        var page = await context.NewPageAsync();
+        await page.GotoAsync("https://demos.telerik.com/kendo-ui/window/angular");
+        await page.Locator("text=Calendar May 2022SuMoTuWeThFrSa1234567891011121314151617181920212223242526272829 >> [aria-label=\"Close\"]").ClickAsync();
+        await page.Locator("text=Calendar May 2022SuMoTuWeThFrSa1234567891011121314151617181920212223242526272829 >> [aria-label=\"Close\"]").ClickAsync();
+        // Click button:has-text("Open AJAX content")
+        await page.Locator("button:has-text(\"Open AJAX content\")").ClickAsync();
+  
     }
 }
