@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using System.Web;
+using FluentAssertions;
 using Microsoft.Playwright;
 using NUnit.Framework;
 using PlaywrightDemo.Pages;
@@ -110,5 +112,37 @@ public class Tests
 
         var isExist = await loginPage.IsEmployeeDetailsExists();
         Assert.IsTrue(isExist);
+    }
+
+    [Test]
+    public async Task Flipkart()
+    {
+        using var playwright = await Playwright.CreateAsync();
+        await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+        {
+            Headless = false
+        });
+        var context = await browser.NewContextAsync();
+        var page = await context.NewPageAsync();
+        await page.GotoAsync("https://www.flipkart.com/", new PageGotoOptions
+        {
+            WaitUntil = WaitUntilState.NetworkIdle
+        });
+        await page.Locator("text=✕").ClickAsync();
+
+        await page.Locator("a", new PageLocatorOptions
+        {
+            HasTextString = "Login"
+        }).ClickAsync();
+        
+        var request = await page.RunAndWaitForRequestAsync(async () =>
+        {
+            await page.Locator("text=✕").ClickAsync();
+        }, x => x.Url.Contains("flipkart.d1.sc.omtrdc.net") && x.Method == "GET");
+
+        var returnData = HttpUtility.UrlDecode(request.Url);
+
+        returnData.Should().Contain("Account Login:Displayed Exit");
+
     }
 }
