@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Using Include="TechTalk.SpecFlow" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+        <PackageReference Include="Microsoft.Playwright" Version="1.23.0" />
+        <PackageReference Include="SpecFlow.Assist.Dynamic" Version="1.4.2" />
+        <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
+        <PackageReference Include="SpecFlow.NUnit" Version="3.9.22" />
+        <PackageReference Include="nunit" Version="3.13.2" />
+        <PackageReference Include="NUnit3TestAdapter" Version="4.1.0" />
+        <PackageReference Include="FluentAssertions" Version="6.2.0" />
+    </ItemGroup>
+
+</Project>

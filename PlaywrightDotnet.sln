@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaywrightDemo", "PlaywrightDemo\PlaywrightDemo.csproj", "{2908FCFD-2BC9-41E6-8E0A-1FF5D3263AFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowProject1", "PlaywrightSpecflow\SpecFlowProject1\SpecFlowProject1.csproj", "{8A6456FD-BC62-4215-9241-02B73955A9DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaywrightAPITesting", "PlaywrightAPITesting\PlaywrightAPITesting.csproj", "{DBC38AEA-0B31-494C-A8B0-D359865F3637}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2908FCFD-2BC9-41E6-8E0A-1FF5D3263AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2908FCFD-2BC9-41E6-8E0A-1FF5D3263AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2908FCFD-2BC9-41E6-8E0A-1FF5D3263AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2908FCFD-2BC9-41E6-8E0A-1FF5D3263AFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A6456FD-BC62-4215-9241-02B73955A9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A6456FD-BC62-4215-9241-02B73955A9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A6456FD-BC62-4215-9241-02B73955A9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A6456FD-BC62-4215-9241-02B73955A9DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBC38AEA-0B31-494C-A8B0-D359865F3637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBC38AEA-0B31-494C-A8B0-D359865F3637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBC38AEA-0B31-494C-A8B0-D359865F3637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBC38AEA-0B31-494C-A8B0-D359865F3637}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
