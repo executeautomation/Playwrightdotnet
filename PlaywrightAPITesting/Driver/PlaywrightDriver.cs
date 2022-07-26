@@ -1,6 +1,6 @@
 using Microsoft.Playwright;
 
-namespace PlaywrightAPITesting;
+namespace PlaywrightAPITesting.Driver;
 
 public class PlaywrightDriver : IDisposable
 {

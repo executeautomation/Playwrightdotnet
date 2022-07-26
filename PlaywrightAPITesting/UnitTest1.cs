@@ -2,6 +2,7 @@ using System.Text.Json;
 using FluentAssertions;
 // using GraphQLProductApp.Data;
 using Microsoft.Playwright;
+using PlaywrightAPITesting.Driver;
 using Xunit.Abstractions;
 
 namespace PlaywrightAPITesting;
