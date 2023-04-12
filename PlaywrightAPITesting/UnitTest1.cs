@@ -1,10 +1,8 @@
 using System.Text.Json;
 using FluentAssertions;
-// using GraphQLProductApp.Data;
 using Microsoft.Playwright;
 using PlaywrightAPITesting.Driver;
 using Xunit.Abstractions;
-
 namespace PlaywrightAPITesting;
 
 public class UnitTest1 : IClassFixture<PlaywrightDriver>
@@ -18,18 +16,19 @@ public class UnitTest1 : IClassFixture<PlaywrightDriver>
         _playwrightDriver = playwrightDriver;
         _testOutputHelper = testOutputHelper;
     }
-    
+
     [Fact]
     public async Task AuthenticateTest()
     {
-        var response = await _playwrightDriver.ApiRequestContext?.PostAsync("api/Authenticate/Login", new APIRequestContextOptions
-        {
-            DataObject = new
+        var response = await _playwrightDriver.ApiRequestContext?.PostAsync("api/Authenticate/Login",
+            new APIRequestContextOptions
             {
-                UserName = "KK",
-                Password = "123456"
-            }
-        })!;
+                DataObject = new
+                {
+                    UserName = "KK",
+                    Password = "123456"
+                }
+            })!;
 
 
         var jsonString = await response.JsonAsync();
@@ -40,10 +39,9 @@ public class UnitTest1 : IClassFixture<PlaywrightDriver>
         {
             PropertyNameCaseInsensitive = true
         });
-        
+
         _testOutputHelper.WriteLine(jsonString.ToString());
-        
-        
+
 
         authencationResponse?.Token.Should().NotBeNull();
         authencationResponse?.Token.Should().NotBe(string.Empty);
@@ -55,16 +53,17 @@ public class UnitTest1 : IClassFixture<PlaywrightDriver>
     {
         var token = await GetToken();
 
-        var response = await _playwrightDriver.ApiRequestContext?.GetAsync("Product/GetProductById/1", new APIRequestContextOptions
-        {
-            Headers = new Dictionary<string, string>
+        var response = await _playwrightDriver.ApiRequestContext?.GetAsync("Product/GetProductById/1",
+            new APIRequestContextOptions
             {
-                { "Authorization", $"Bearer {token}" }
-            }
-        })!;
+                Headers = new Dictionary<string, string>
+                {
+                    { "Authorization", $"Bearer {token}" }
+                }
+            })!;
 
         var data = await response.JsonAsync();
-        
+
         _testOutputHelper.WriteLine(data.ToString());
 
         //Reference wont works, since product type needs RestSharp course source code
@@ -80,19 +79,19 @@ public class UnitTest1 : IClassFixture<PlaywrightDriver>
         //     product?.Name.Should().Be("Keyboards");
         //     product?.ProductId.Should().Be(2);
         // }
-
     }
 
     private async Task<string?> GetToken()
     {
-        var response = await _playwrightDriver.ApiRequestContext?.PostAsync("api/Authenticate/Login", new APIRequestContextOptions
-        {
-            DataObject = new
+        var response = await _playwrightDriver.ApiRequestContext?.PostAsync("api/Authenticate/Login",
+            new APIRequestContextOptions
             {
-                UserName = "KK",
-                Password = "123456"
-            }
-        })!;
+                DataObject = new
+                {
+                    UserName = "KK",
+                    Password = "123456"
+                }
+            })!;
 
         var jsonString = await response.JsonAsync();
 

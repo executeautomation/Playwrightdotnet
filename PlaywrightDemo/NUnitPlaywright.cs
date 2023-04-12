@@ -1,8 +1,3 @@
-using System.Threading.Tasks;
-using Microsoft.Playwright;
-using Microsoft.Playwright.NUnit;
-using NUnit.Framework;
-
 namespace PlaywrightDemo;
 
 public class NUnitPlaywright : PageTest
@@ -28,5 +23,4 @@ public class NUnitPlaywright : PageTest
         //await Page.ClickAsync("text=Log in");
         await Expect(Page.Locator("text='Employee Details'")).ToBeVisibleAsync();
     }
-    
 }

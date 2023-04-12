@@ -1,18 +1,17 @@
-using System.Threading.Tasks;
 using Microsoft.Playwright;
 
 namespace PlaywrightDemo.Pages;
 
 public class LoginPage
 {
-
-    private IPage _page;
-    private readonly ILocator _lnkLogin;
-    private readonly ILocator _txtUserName;
-    private readonly ILocator _txtPassword;
     private readonly ILocator _btnLogin;
     private readonly ILocator _lnkEmployeeDetails;
-    
+    private readonly ILocator _lnkLogin;
+    private readonly ILocator _txtPassword;
+    private readonly ILocator _txtUserName;
+
+    private readonly IPage _page;
+
     public LoginPage(IPage page)
     {
         _page = page;
@@ -23,8 +22,11 @@ public class LoginPage
         _lnkEmployeeDetails = _page.Locator("text='Employee Details'");
     }
 
-    public async Task ClickLogin() => await _lnkLogin.ClickAsync();
-    
+    public async Task ClickLogin()
+    {
+        await _lnkLogin.ClickAsync();
+    }
+
     public async Task Login(string userName, string password)
     {
         await _txtUserName.FillAsync(userName);
@@ -32,6 +34,8 @@ public class LoginPage
         await _btnLogin.ClickAsync();
     }
 
-    public async Task<bool> IsEmployeeDetailsExists() => await _lnkEmployeeDetails.IsVisibleAsync();
-
+    public async Task<bool> IsEmployeeDetailsExists()
+    {
+        return await _lnkEmployeeDetails.IsVisibleAsync();
+    }
 }
