@@ -15,11 +15,11 @@ public class LoginPage
     public LoginPage(IPage page)
     {
         _page = page;
-        _lnkLogin = _page.Locator("text=Login");
-        _txtUserName = _page.Locator("#UserName");
-        _txtPassword = _page.Locator("#Password");
-        _btnLogin = _page.Locator("text=Log in");
-        _lnkEmployeeDetails = _page.Locator("text='Employee Details'");
+        _lnkLogin = _page.GetByRole(AriaRole.Link, new() { Name = "Login" });
+        _txtUserName = _page.GetByLabel("UserName");
+        _txtPassword = _page.GetByLabel("Password");
+        _btnLogin = _page.GetByRole(AriaRole.Button,new() { Name= "Log in"} );
+        _lnkEmployeeDetails = _page.GetByRole(AriaRole.Link, new() { Name = "Employee List" });
     }
 
     public async Task ClickLogin()
