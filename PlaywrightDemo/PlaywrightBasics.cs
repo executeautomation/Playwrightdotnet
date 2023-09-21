@@ -183,13 +183,13 @@ public class Tests
         //Page
         var page = await browser.NewPageAsync(new BrowserNewPageOptions
         {
-            RecordHarPath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/eapp.har",
+            RecordHarPath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/eapp.har"
             //RecordHarUrlFilter = "**/Product/**"
         });
 
 
         await page.RouteFromHARAsync($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/eapp.har",
-            new()
+            new PageRouteFromHAROptions
             {
                 Url = "**/Product/List",
                 Update = false
@@ -222,6 +222,5 @@ public class Tests
         await Task.Delay(1000);
 
         await page.CloseAsync();
-
     }
 }

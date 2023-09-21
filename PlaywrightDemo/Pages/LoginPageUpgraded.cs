@@ -1,5 +1,3 @@
-using Microsoft.Playwright;
-
 namespace PlaywrightDemo.Pages;
 
 public class LoginPageUpgraded
@@ -10,14 +8,18 @@ public class LoginPageUpgraded
     {
         _page = page;
     }
-    private ILocator _lnkLogin => _page.GetByRole(AriaRole.Link, new() { Name = "Login" });
+
+    private ILocator _lnkLogin => _page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Login" });
     private ILocator _txtUserName => _page.GetByLabel("UserName");
     private ILocator _txtPassword => _page.GetByLabel("Password");
-    private ILocator _btnLogin => _page.GetByRole(AriaRole.Button,new() { Name= "Log in"} );
-    private ILocator _lnkEmployeeDetails => _page.GetByRole(AriaRole.Link, new() { Name = "Employee List" });
+    private ILocator _btnLogin => _page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Log in" });
+
+    private ILocator _lnkEmployeeDetails =>
+        _page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Employee List" });
+
     private ILocator _lnkEmployeeLists => _page.Locator("text='Employee List'");
-    
-    
+
+
     public async Task ClickLogin()
     {
         await _page.RunAndWaitForNavigationAsync(async () => { await _lnkLogin.ClickAsync(); },

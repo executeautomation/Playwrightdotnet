@@ -11,7 +11,7 @@ public class PlaywrightLocator
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
-            Headless = false,
+            Headless = false
         });
         var context = await browser.NewContextAsync();
 
@@ -19,7 +19,7 @@ public class PlaywrightLocator
 
         await page.GotoAsync("http://eaapp.somee.com/");
 
-        await page.GetByRole(AriaRole.Link, new() { Name = "Login" }).ClickAsync();
+        await page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Login" }).ClickAsync();
 
         await page.GetByLabel("UserName").ClickAsync();
 
@@ -29,11 +29,11 @@ public class PlaywrightLocator
 
         await page.GetByLabel("Password").FillAsync("password");
 
-        await page.GetByRole(AriaRole.Button, new() { Name = "Log in" }).ClickAsync();
+        await page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Log in" }).ClickAsync();
 
-        await page.GetByRole(AriaRole.Link, new() { Name = "Employee List" }).ClickAsync();
+        await page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Employee List" }).ClickAsync();
 
-        await page.GetByRole(AriaRole.Link, new() { Name = "Create New" }).ClickAsync();
+        await page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Create New" }).ClickAsync();
 
         await page.GetByLabel("Name").ClickAsync();
 
@@ -55,13 +55,13 @@ public class PlaywrightLocator
 
         await page.GetByLabel("Email").FillAsync("adam@adam.com");
 
-        await page.GetByRole(AriaRole.Button, new() { Name = "Create" }).ClickAsync();
+        await page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Create" }).ClickAsync();
 
         await page
-            .GetByRole(AriaRole.Row, new() { Name = "Adam" })
-            .GetByRole(AriaRole.Link, new() { Name = "Delete" }).ClickAsync();
+            .GetByRole(AriaRole.Row, new PageGetByRoleOptions { Name = "Adam" })
+            .GetByRole(AriaRole.Link, new LocatorGetByRoleOptions { Name = "Delete" }).ClickAsync();
 
-        await page.ScreenshotAsync(new()
+        await page.ScreenshotAsync(new PageScreenshotOptions
         {
             Path = "screenshot.png",
             FullPage = true
@@ -71,10 +71,10 @@ public class PlaywrightLocator
     [Test]
     public async Task LocatorTestForEA()
     {
-         using var playwright = await Playwright.CreateAsync();
+        using var playwright = await Playwright.CreateAsync();
         await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
-            Headless = false,
+            Headless = false
         });
         var context = await browser.NewContextAsync();
 
@@ -87,7 +87,7 @@ public class PlaywrightLocator
 
 
         await page.RouteFromHARAsync($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/eapp.har",
-            new()
+            new PageRouteFromHAROptions
             {
                 Url = "**/Product/List",
                 Update = true
@@ -95,43 +95,45 @@ public class PlaywrightLocator
 
         await page.GotoAsync("https://executeautomation.com/");
 
-        await page.GetByRole(AriaRole.Link, new() { Name = "Sign In" }).ClickAsync();
+        await page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Sign In" }).ClickAsync();
 
-        await page.GetByRole(AriaRole.Link, new() { Name = "Sign Up" }).ClickAsync();
-        
+        await page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Sign Up" }).ClickAsync();
+
         await page.GetByPlaceholder("First Name").FillAsync("DemoUser1");
 
         await page.GetByPlaceholder("Last Name").FillAsync("KK");
 
         await page.Locator("#react-select-2-input").FillAsync("New");
 
-        await page.GetByText("New Zealand", new() { Exact = true }).ClickAsync();
+        await page.GetByText("New Zealand", new PageGetByTextOptions { Exact = true }).ClickAsync();
 
         await page.GetByPlaceholder("Email Address").FillAsync("demouser1@demo1.com");
 
-        await page.GetByPlaceholder("Password", new() { Exact = true }).FillAsync("password");
+        await page.GetByPlaceholder("Password", new PageGetByPlaceholderOptions { Exact = true }).FillAsync("password");
 
         await page.GetByPlaceholder("Enter Password Again").FillAsync("password");
 
         await page.GetByPlaceholder("Profession").FillAsync("Tester");
 
-        await page.GetByRole(AriaRole.Button, new() { Name = "Create Account" }).ClickAsync();
+        await page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Create Account" }).ClickAsync();
 
         await page.Locator("img:nth-child(2)").ClickAsync();
 
-        await page.GetByRole(AriaRole.Button, new() { Name = "Create Account" }).ClickAsync();
+        await page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Create Account" }).ClickAsync();
 
         await page.Locator(".ct-logo-header").ClickAsync();
 
-        await page.GetByRole(AriaRole.Link, new() { Name = "Codeless automation Lean" }).ClickAsync();
+        await page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Codeless automation Lean" })
+            .ClickAsync();
 
-        await page.GetByRole(AriaRole.Link, new() { Name = "1 Katalon Studio" }).ClickAsync();
+        await page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "1 Katalon Studio" }).ClickAsync();
 
-        await page.GetByRole(AriaRole.Button, new() { Name = "Watch" }).ClickAsync();
+        await page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Watch" }).ClickAsync();
 
-        await page.GetByRole(AriaRole.Heading, new() { Name = "Part 2 - Record & playback," }).ClickAsync();
+        await page.GetByRole(AriaRole.Heading, new PageGetByRoleOptions { Name = "Part 2 - Record & playback," })
+            .ClickAsync();
 
-        await page.GetByRole(AriaRole.Button, new() { Name = "Close" }).ClickAsync();
+        await page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Close" }).ClickAsync();
     }
 
 
@@ -141,7 +143,7 @@ public class PlaywrightLocator
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
-            Headless = false,
+            Headless = false
         });
         var context = await browser.NewContextAsync();
 
@@ -149,8 +151,8 @@ public class PlaywrightLocator
 
         await page.GotoAsync("http://localhost:8000/Product/Create");
 
-        var form1 = page.GetByRole(AriaRole.Form, new() { Name = "form1" });
-        var form2 = page.GetByRole(AriaRole.Form, new() { Name = "form2" });
+        var form1 = page.GetByRole(AriaRole.Form, new PageGetByRoleOptions { Name = "form1" });
+        var form2 = page.GetByRole(AriaRole.Form, new PageGetByRoleOptions { Name = "form2" });
 
         await form1.GetByLabel("Name").FillAsync("keyboard");
 
@@ -167,6 +169,5 @@ public class PlaywrightLocator
         await form2.GetByRole(AriaRole.Spinbutton).FillAsync("10");
 
         await form2.Locator("#ProductType").SelectOptionAsync(new[] { "1" });
-
     }
 }

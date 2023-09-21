@@ -1,5 +1,3 @@
-using Microsoft.Playwright;
-
 namespace PlaywrightDemo.Pages;
 
 public class LoginPage
@@ -7,19 +5,19 @@ public class LoginPage
     private readonly ILocator _btnLogin;
     private readonly ILocator _lnkEmployeeDetails;
     private readonly ILocator _lnkLogin;
-    private readonly ILocator _txtPassword;
-    private readonly ILocator _txtUserName;
 
     private readonly IPage _page;
+    private readonly ILocator _txtPassword;
+    private readonly ILocator _txtUserName;
 
     public LoginPage(IPage page)
     {
         _page = page;
-        _lnkLogin = _page.GetByRole(AriaRole.Link, new() { Name = "Login" });
+        _lnkLogin = _page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Login" });
         _txtUserName = _page.GetByLabel("UserName");
         _txtPassword = _page.GetByLabel("Password");
-        _btnLogin = _page.GetByRole(AriaRole.Button,new() { Name= "Log in"} );
-        _lnkEmployeeDetails = _page.GetByRole(AriaRole.Link, new() { Name = "Employee List" });
+        _btnLogin = _page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Log in" });
+        _lnkEmployeeDetails = _page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Employee List" });
     }
 
     public async Task ClickLogin()
