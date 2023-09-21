@@ -1,3 +1,6 @@
+using System.IO;
+using System.Reflection;
+
 namespace PlaywrightDemo;
 
 public class PlaywrightLocator
@@ -68,14 +71,27 @@ public class PlaywrightLocator
     [Test]
     public async Task LocatorTestForEA()
     {
- using var playwright = await Playwright.CreateAsync();
+         using var playwright = await Playwright.CreateAsync();
         await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
             Headless = false,
         });
         var context = await browser.NewContextAsync();
 
-        var page = await context.NewPageAsync();
+        //Page
+        var page = await browser.NewPageAsync(new BrowserNewPageOptions
+        {
+            RecordHarPath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/eapp.har",
+            RecordHarUrlFilterString = "**/Product/List"
+        });
+
+
+        await page.RouteFromHARAsync($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/eapp.har",
+            new()
+            {
+                Url = "**/Product/List",
+                Update = true
+            });
 
         await page.GotoAsync("https://executeautomation.com/");
 

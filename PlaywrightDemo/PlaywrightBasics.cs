@@ -1,3 +1,6 @@
+using System.IO;
+using System.Reflection;
+
 namespace PlaywrightDemo;
 
 public class Tests
@@ -163,5 +166,62 @@ public class Tests
         {
             WaitUntil = WaitUntilState.NetworkIdle
         });
+    }
+
+
+    [Test]
+    public async Task TestForHar()
+    {
+        //Playwright
+        using var playwright = await Playwright.CreateAsync();
+        //Browser
+        await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+        {
+            Headless = false
+        });
+
+        //Page
+        var page = await browser.NewPageAsync(new BrowserNewPageOptions
+        {
+            RecordHarPath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/eapp.har",
+            //RecordHarUrlFilter = "**/Product/**"
+        });
+
+
+        await page.RouteFromHARAsync($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/eapp.har",
+            new()
+            {
+                Url = "**/Product/List",
+                Update = false
+            });
+
+        await page.GotoAsync("http://localhost:5001/");
+
+        await page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Product" }).ClickAsync();
+
+        await page.GetByRole(AriaRole.Link, new PageGetByRoleOptions { Name = "Create" }).ClickAsync();
+
+        await page.GetByLabel("Name").ClickAsync();
+
+        await page.GetByLabel("Name").FillAsync("karthik");
+
+        await page.GetByLabel("Name").PressAsync("Tab");
+
+        await page.GetByLabel("Description").FillAsync("12");
+
+        await page.GetByLabel("Description").PressAsync("Tab");
+
+        await page.Locator("#Price").FillAsync("100");
+
+        await page.Locator("#Price").PressAsync("Tab");
+
+        await page.GetByLabel("ProductType").SelectOptionAsync(new[] { "1" });
+
+        await page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Create" }).ClickAsync();
+
+        await Task.Delay(1000);
+
+        await page.CloseAsync();
+
     }
 }
