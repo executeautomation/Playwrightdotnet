@@ -1,14 +1,18 @@
 # Playwrightdotnet
-Contains repository for playwright with .NET language binding
+Contains a repository for `Playwright` with .NET language binding
 
 
 ## Updates
-The complete code is update to latest version of Playwright with latest version of .NET which is .NET 7
+The complete code is updated to the latest version of Playwright with the latest version of .NET which is .NET 7
 
 
-# Complete Video series on this repo in YouTube
+# Complete the Video series on this repo on YouTube
 
 https://www.youtube.com/playlist?list=PL6tu16kXT9PoUv6HwexX5LPBzzv7QkI9W
+
+# Udemy Course For Building an Advanced framework beyond the basics 🚀
+
+https://www.udemy.com/course/framework-development-with-playwright-dotnet/ 🎉🦾
 
 # Playwright Architecture
 
