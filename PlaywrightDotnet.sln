@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowProject1", "Playwri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaywrightAPITesting", "PlaywrightAPITesting\PlaywrightAPITesting.csproj", "{DBC38AEA-0B31-494C-A8B0-D359865F3637}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaywrightNUnitDemo", "PlaywrightNUnitDemo\PlaywrightNUnitDemo.csproj", "{064E257B-E87A-44F2-9708-442F526B08A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{DBC38AEA-0B31-494C-A8B0-D359865F3637}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBC38AEA-0B31-494C-A8B0-D359865F3637}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBC38AEA-0B31-494C-A8B0-D359865F3637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{064E257B-E87A-44F2-9708-442F526B08A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{064E257B-E87A-44F2-9708-442F526B08A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{064E257B-E87A-44F2-9708-442F526B08A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{064E257B-E87A-44F2-9708-442F526B08A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
